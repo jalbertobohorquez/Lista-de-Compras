@@ -21,9 +21,12 @@ formularioUI.addEventListener('submit', (e) => {
     let productoUI = document.getElementById('producto').value;
     let cantidadUI = document.getElementById('cantidad').value;
     console.log(cantidadUI, productoUI);
-
-    CrearItem(productoUI, cantidadUI);
-    GuardarDB();
+    if(cantidadUI=="" || productoUI==""){
+        alert("Debe rellenar todos los campos");
+    }else{
+        CrearItem(productoUI, cantidadUI);
+        GuardarDB();
+    }
     
     formularioUI.reset();
 });
