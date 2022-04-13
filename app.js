@@ -8,7 +8,7 @@ const CrearItem = (producto, cantidad, marca) => {
         producto: producto,
         cantidad: cantidad,
         marca: marca,
-        estado: false
+        estado: "No Comprado"
     }
     arrayListadeCompras.push(item);
     return item;
@@ -25,11 +25,19 @@ const PintarDB = () => {
         arrayListadeCompras = [];
     }else{
         arrayListadeCompras.forEach(Element => {
-            ListadeComprasUI.innerHTML += `<div class="alert alert-danger" role="alert">
+            if(Element.estado == "Comprado"){
+                ListadeComprasUI.innerHTML += `<div class="alert alert-success" role="alert">
                 <span class="material-icons float-lg-start me-2">filter_vintage</span>
                 Producto: <b>${Element.producto}</b> - Marca: <b>${Element.marca}</b> - Cantidad: <b>${Element.cantidad}</b> - Estado: <b>${Element.estado}</b>
                 <span class="float-lg-end"><span class="material-icons">done</span>
                 <span class="material-icons">delete</span></span></div>`;
+            }else if(Element.estado == "No Comprado"){
+                ListadeComprasUI.innerHTML += `<div class="alert alert-danger" role="alert">
+                <span class="material-icons float-lg-start me-2">filter_vintage</span>
+                Producto: <b>${Element.producto}</b> - Marca: <b>${Element.marca}</b> - Cantidad: <b>${Element.cantidad}</b> - Estado: <b>${Element.estado}</b>
+                <span class="float-lg-end"><span class="material-icons">done</span>
+                <span class="material-icons">delete</span></span></div>`;
+            }
         })
     }
 }
@@ -48,7 +56,7 @@ const EliminarDB = (producto, marca, cantidad) =>{
 const EditarDB = (producto, marca, cantidad) =>{
     let indexArray = arrayListadeCompras.findIndex((elemento) =>
         elemento.producto === producto && elemento.marca === marca && elemento.cantidad === cantidad);
-    arrayListadeCompras[indexArray].estado = true;
+    arrayListadeCompras[indexArray].estado = "Comprado";
     GuardarDB();
 }
 //EventListener
