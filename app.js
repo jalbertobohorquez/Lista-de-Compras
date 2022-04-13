@@ -74,9 +74,9 @@ formularioUI.addEventListener('submit', (e) => {
         }
         CrearItem(productoUI, cantidadUI, marcaUI);
         GuardarDB();
+        formularioUI.reset();
     }
     
-    formularioUI.reset();
 });
 
 document.addEventListener('DOMContentLoaded', PintarDB);
