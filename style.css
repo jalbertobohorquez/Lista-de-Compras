@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(160, 195, 219);
+    background-image: url("images/fondo.png");
     font-family: "Raleway", sans-serif;
 }
 div{
@@ -9,18 +9,22 @@ div{
     padding: 20px 8px 5px 8px;
 }
 .mt-5{
-    background-color: rgb(135, 164, 199);
+    background-color: rgb(184, 210, 241);
     border-radius: 8px;
 }
 .mt-5 h3{
     text-align: center;
-    color: rgb(60, 95, 124);
+    color: rgb(55, 76, 94)
 }
 .mt-5 .mt-4{
-    color: rgb(255, 255, 255);
+    color: rgb(65, 89, 105);
 }
 .mt-5 .mt-4 .btn{
-    background-color: rgb(89, 170, 207);
-    border-color: rgb(52, 129, 165);
+    background-color: rgb(78, 114, 148);
+    border-color: rgb(49, 85, 102);
 }
+.mt-5 .mt-4 .btn:hover{
+    background-color: rgb(135, 168, 184);
+}
+
 
