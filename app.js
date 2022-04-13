@@ -25,13 +25,31 @@ const PintarDB = () => {
         arrayListadeCompras = [];
     }else{
         arrayListadeCompras.forEach(Element => {
-            ListadeComprasUI.innerHTML += `<div class="alert alert-primary" role="alert">
+            ListadeComprasUI.innerHTML += `<div class="alert alert-danger" role="alert">
                 <span class="material-icons float-lg-start me-2">filter_vintage</span>
                 Producto: <b>${Element.producto}</b> - Marca: <b>${Element.marca}</b> - Cantidad: <b>${Element.cantidad}</b> - Estado: <b>${Element.estado}</b>
-                <span class="float-end"><span class="material-icons">done</span>
+                <span class="float-lg-end"><span class="material-icons">done</span>
                 <span class="material-icons">delete</span></span></div>`;
         })
     }
+}
+
+const EliminarDB = (producto, marca, cantidad) =>{
+    let indexArray;
+    arrayListadeCompras.forEach((elemento,index) => {
+        if(elemento.producto === producto && elemento.marca === marca && elemento.cantidad === cantidad){
+            indexArray = index;
+        }
+    })
+    arrayListadeCompras.splice(indexArray,1);
+    GuardarDB();
+} 
+
+const EditarDB = (producto, marca, cantidad) =>{
+    let indexArray = arrayListadeCompras.findIndex((elemento) =>
+        elemento.producto === producto && elemento.marca === marca && elemento.cantidad === cantidad);
+    arrayListadeCompras[indexArray].estado = true;
+    GuardarDB();
 }
 //EventListener
 formularioUI.addEventListener('submit', (e) => {
@@ -57,8 +75,17 @@ document.addEventListener('DOMContentLoaded', PintarDB);
 
 ListadeComprasUI.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log(e.path[2].childNodes[3].innerHTML, e.path[2].childNodes[5].innerHTML,e.path[2].childNodes[7].innerHTML);
-    if(e.target.innerHTML === 'done'){
-
+    if(e.target.innerHTML === 'done' || e.target.innerHTML === 'delete'){
+        let product = e.path[2].childNodes[3].innerHTML; 
+        let marc = e.path[2].childNodes[5].innerHTML;
+        let cantd = e.path[2].childNodes[7].innerHTML;
+        if(e.target.innerHTML === 'delete'){
+            // Acción de Eliminar
+            EliminarDB(product, marc, cantd);
+        }
+        if(e.target.innerHTML === 'done'){
+            // Acción de Editar
+            EditarDB(product, marc, cantd);
+        }
     }
 })
