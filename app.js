@@ -67,7 +67,7 @@ formularioUI.addEventListener('submit', (e) => {
     let marcaUI= document.getElementById('marca').value;
     
     if(cantidadUI=="" || productoUI==""){
-        alert("Debe rellenar al menos los campos de Producto y Cantidad");
+        alert("Debe rellenar los campos marcados con ( * ), los cuales son obligatorios.");
     }else{
         if(marcaUI==""){
             marcaUI="No especificada";
