@@ -17,7 +17,6 @@ const GuardarDB = () => {
     localStorage.setItem('compras', JSON.stringify(arrayListadeCompras));
     PintarDB();
 }
-
 const PintarDB = () => {
     ListadeComprasUI.innerHTML = '';
     arrayListadeCompras = JSON.parse(localStorage.getItem('compras'));
@@ -72,7 +71,8 @@ formularioUI.addEventListener('submit', (e) => {
         if(marcaUI==""){
             marcaUI="No especificada";
         }
-        CrearItem(productoUI, cantidadUI, marcaUI);
+      
+  CrearItem(productoUI, cantidadUI, marcaUI);
         GuardarDB();
         formularioUI.reset();
     }

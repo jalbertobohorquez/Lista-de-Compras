@@ -25,6 +25,10 @@ div{
 }
 .mt-5 .mt-4 .btn:hover{
     background-color: rgb(135, 168, 184);
+    
+}
+.material-icons:hover{
+    cursor:pointer;
 }
 
 
